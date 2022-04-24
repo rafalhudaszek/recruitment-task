@@ -1,0 +1,27 @@
+SELECT * 
+FROM Products AS p 
+ORDER BY p.ProductName ASC, p.Price DESC;
+
+SELECT o.OrderID, o.OrderDate, od.Quantity, p.ProductName
+FROM OrderDetails AS od
+INNER JOIN Products AS p
+ON od.ProductId=p.ProductID
+INNER JOIN Orders as o
+ON od.OrderID=o.OrderID
+WHERE o.OrderID = 10406;
+
+SELECT c.CategoryID, c.CategoryName,  COUNT(*) as ProductsAmountForCategory 
+FROM Categories AS c 
+INNER JOIN Products AS p
+ON p.CategoryID=c.CategoryID
+GROUP BY p.CategoryID;
+
+SELECT o.OrderID, o.OrderDate, p.Price*od.Quantity as OrderValue
+FROM OrderDetails AS od
+INNER JOIN Orders AS o
+ON o.OrderID=od.OrderID
+INNER JOIN Products AS p
+ON p.ProductID=od.ProductID
+WHERE CAST(SUBSTR(o.OrderDate, 1, 4) AS integer) = '1997'
+ORDER BY OrderValue DESC
+LIMIT 10;
