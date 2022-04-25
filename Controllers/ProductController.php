@@ -15,7 +15,7 @@ class ProductController extends Controller
         parent::__construct();
     }
 
-    public function initializeCart(int $id): ProductController
+    public function initializeProduct(int $id): ProductController
     {
         $this->product = new Product();
         $this->product->setDataFromExisting(id : $id);

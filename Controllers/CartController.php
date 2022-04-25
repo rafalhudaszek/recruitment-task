@@ -43,7 +43,7 @@ class CartController extends Controller
         foreach ($amountOfProducts as $amountOfProduct) {
             //TODO: there should by one Controller for many models of Product
             $productController = new ProductController();
-            $productController->initializeCart($amountOfProduct['product_id']);
+            $productController->initializeProduct($amountOfProduct['product_id']);
             $cartValue += $productController->product->getPrice() * $amountOfProduct['quantity'];
         }
 
@@ -57,7 +57,7 @@ class CartController extends Controller
 
         foreach ($amountOfProducts as $amountOfProduct) {
             $productController = new ProductController();
-            $productController->initializeCart($amountOfProduct['product_id']);
+            $productController->initializeProduct($amountOfProduct['product_id']);
             $content = "$content<tr><td>{$productController->product->getName()}</td><td>{$amountOfProduct['quantity']}</td><td>{$productController->product->getPrice()}</td></tr>";
         }
 
@@ -73,7 +73,7 @@ class CartController extends Controller
 
         foreach ($amountOfProducts as $amountOfProduct) {
             $productController = new ProductController();
-            $productController->initializeCart($amountOfProduct['product_id']);
+            $productController->initializeProduct($amountOfProduct['product_id']);
             $content = "$content\t{$productController->product->getName()}\t{$amountOfProduct['quantity']}\t{$productController->product->getPrice()}\n";
         }
 

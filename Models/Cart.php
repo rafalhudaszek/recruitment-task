@@ -46,13 +46,6 @@ class Cart extends Model
         return $this;
     }
 
-//    public function getAll(): array {
-//        $query = 'SELECT * from carts;';
-//
-//        $data = $this->execute($query);
-//        return $data->fetchAll();
-//    }
-
     public function getById(int $id): array {
         $query = "SELECT * FROM carts WHERE id = $id;";
 
